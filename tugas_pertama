@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Menghitung Luas - Persegi Panjang, Persegi, Segitiga</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; padding: 24px; }
+    code { background:#f4f4f4; padding:2px 6px; border-radius:4px }
+    .card{border:1px solid #ddd;padding:16px;border-radius:8px;max-width:720px}
+    .result{font-weight:700;margin-top:6px}
+  </style>
+</head>
+<body>
+  <h1>Menghitung Luas</h1>
+  <p>Contoh perhitungan luas menggunakan <code>variabel</code> dan <code>operator</code> di JavaScript.</p>
+
+  <div class="card">
+    <h2>Persegi Panjang</h2>
+    <p id="rect-desc"></p>
+    <div class="result" id="rect-result"></div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>Persegi (Bujur Sangkar)</h2>
+    <p id="square-desc"></p>
+    <div class="result" id="square-result"></div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2>Segitiga</h2>
+    <p id="tri-desc"></p>
+    <div class="result" id="tri-result"></div>
+  </div>
+
+  <script>
+  /*
+    Fungsi-fungsi berikut menghitung luas beberapa bangun datar.
+    - Gunakan variabel untuk menyimpan parameter (panjang, lebar, sisi, tinggi, alas)
+    - Gunakan operator aritmatika (+, -, *, /) untuk menghitung hasil
+    - Setiap fungsi disertai komentar penjelasan
+  */
+
+  /**
+   * Menghitung luas persegi panjang
+   * @param {number} panjang - panjang persegi panjang
+   * @param {number} lebar - lebar persegi panjang
+   * @returns {number} luas (panjang * lebar)
+   * 
+   * Penjelasan: luas persegi panjang adalah hasil perkalian antara panjang dan lebar.
+   * Kita menggunakan operator * untuk mengalikan dua variabel angka.
+   */
+  function luasPersegiPanjang(panjang, lebar) {
+    // pastikan input adalah angka (konversi bila perlu)
+    const p = Number(panjang);
+    const l = Number(lebar);
+
+    // operasi perkalian untuk mendapatkan luas
+    const luas = p * l;
+    return luas;
+  }
+
+  /**
+   * Menghitung luas persegi (bujur sangkar)
+   * @param {number} sisi - panjang sisi persegi
+   * @returns {number} luas (sisi * sisi)
+   * 
+   * Penjelasan: persegi memiliki 4 sisi yang sama panjang.
+   * Luasnya dihitung dengan mengkuadratkan panjang sisi (sisi^2).
+   */
+  function luasPersegi(sisi) {
+    const s = Number(sisi);
+    // menggunakan operator * untuk kuadrat
+    const luas = s * s;
+    return luas;
+  }
+
+  /**
+   * Menghitung luas segitiga
+   * @param {number} alas - panjang alas segitiga
+   * @param {number} tinggi - tinggi segitiga
+   * @returns {number} luas (0.5 * alas * tinggi)
+   * 
+   * Penjelasan: rumus luas segitiga adalah 1/2 * alas * tinggi.
+   * Kita menggunakan operator * dan / untuk menghitung 1/2 * alas * tinggi.
+   */
+  function luasSegitiga(alas, tinggi) {
+    const a = Number(alas);
+    const t = Number(tinggi);
+    const luas = 0.5 * a * t; // 0.5 sama dengan 1/2
+    return luas;
+  }
+
+  // --- Contoh penggunaan (nilai parameter bebas) ---
+  // Anda bisa mengubah nilai-nilai di bawah untuk mencoba kasus lain.
+  const panjangContoh = 10; // misal 10 satuan
+  const lebarContoh   = 6;  // misal 6 satuan
+
+  const sisiContoh = 8;     // misal sisi persegi 8 satuan
+
+  const alasContoh   = 12;  // misal alas segitiga 12 satuan
+  const tinggiContoh = 5;   // misal tinggi segitiga 5 satuan
+
+  // memanggil fungsi dan menyimpan hasil
+  const hasilPersegiPanjang = luasPersegiPanjang(panjangContoh, lebarContoh);
+  const hasilPersegi = luasPersegi(sisiContoh);
+  const hasilSegitiga = luasSegitiga(alasContoh, tinggiContoh);
+
+  // menampilkan keterangan dan hasil pada halaman
+  document.getElementById('rect-desc').innerText =
+    'Rumus: panjang × lebar. Contoh nilai → panjang = ${panjangContoh}, lebar = ${lebarContoh}';
+  document.getElementById('rect-result').innerText = 'Luas persegi panjang = ${hasilPersegiPanjang}';
+
+  document.getElementById('square-desc').innerText =
+    'Rumus: sisi × sisi. Contoh nilai → sisi = ${sisiContoh}';
+  document.getElementById('square-result').innerText = 'Luas persegi = ${hasilPersegi}';
+
+  document.getElementById('tri-desc').innerText =
+    'Rumus: 1/2 × alas × tinggi. Contoh nilai → alas = ${alasContoh}, tinggi = ${tinggiContoh}';
+  document.getElementById('tri-result').innerText = 'Luas segitiga = ${hasilSegitiga}';
+
+  // Juga cetak ke console untuk debugging/penilaian
+  console.log('Luas persegi panjang:', hasilPersegiPanjang);
+  console.log('Luas persegi:', hasilPersegi);
+  console.log('Luas segitiga:', hasilSegitiga);
+  </script>
+</body>
+</html>
