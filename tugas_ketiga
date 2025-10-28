@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistem Manajemen Pesanan - Toko Online</title>
+</head>
+<body>
+  <h2>Daftar Produk Toko</h2>
+  <pre id="output"></pre>
+
+  <script>
+    // Array produk awal
+    let produkToko = [
+      { id: 1, nama: "Laptop", harga: 7000000, stok: 5 },
+      { id: 2, nama: "Mouse", harga: 200000, stok: 10 },
+      { id: 3, nama: "Keyboard", harga: 350000, stok: 7 }
+    ];
+
+    // Fungsi menampilkan daftar produk
+    function tampilkanProduk() {
+      let teks = "ID\tNama\t\tHarga\t\tStok\n";
+      teks += "-------------------------------------------\n";
+      produkToko.forEach(p => {
+        teks += ${p.id}\t${p.nama}\t\tRp${p.harga}\t\t${p.stok}\n;
+      });
+      document.getElementById("output").textContent = teks;
+    }
+
+    // Fungsi menambah produk baru
+    function tambahProduk(nama, harga, stok) {
+      const idBaru = produkToko.length > 0 ? produkToko[produkToko.length - 1].id + 1 : 1;
+      produkToko.push({ id: idBaru, nama, harga, stok });
+      tampilkanProduk();
+    }
+
+    // Fungsi menghapus produk berdasarkan ID
+    function hapusProduk(id) {
+      produkToko = produkToko.filter(p => p.id !== id);
+      tampilkanProduk();
+    }
+
+    // Tes fungsi
+    tampilkanProduk(); // tampil awal
+    tambahProduk("Headset", 250000, 8); // tambah produk baru
+    hapusProduk(2); // hapus produk dengan id = 2 (Mouse)
+  </script>
+</body>
+</html>
